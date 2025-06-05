@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>View in AR</title>
-  </head>
-  <body>
-    <a rel="ar" href="Sushi.usdz">
-      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWlobmwxcjk5ZXIzZ3g1ZjdqMTF3dmM2a3NndWo4YjR0OXBhMXI3YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3og0IJD4VvwWc7ZepO/giphy.gif" alt="View in AR" style="width: 100%; max-width: 400px;">
-    </a>
-    <script>
-      // Auto-click the AR link for iPhone
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        document.querySelector("a[rel='ar']").click();
-      }
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto AR View</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hidden link with AR asset -->
+  <a id="arLink" rel="ar" href="Sushi.usdz">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWlobmwxcjk5ZXIzZ3g1ZjdqMTF3dmM2a3NndWo4YjR0OXBhMXI3YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3og0IJD4VvwWc7ZepO/giphy.gif" alt="Preview" class="hidden" />
+  </a>
+
+  <script>
+    // Only trigger auto-launch on iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+      window.addEventListener('load', () => {
+        document.getElementById('arLink').click();
+      });
+    } else {
+      document.body.innerHTML = "<p>This page is only for iPhone AR Quick Look.</p>";
+    }
+  </script>
+</body>
 </html>
