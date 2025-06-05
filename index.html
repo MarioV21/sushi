@@ -1,29 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AR Redirect</title>
-  <script>
-    window.onload = function() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-      const glbUrl = "https://mariov21.github.io/sushi/Sushi.glb";
-      const usdzUrl = "https://mariov21.github.io/sushi/Sushi.usdz";
-
-      if (/android/i.test(userAgent)) {
-
-        const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(glbUrl)}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(glbUrl)};end;`;
-        window.location.href = intentUrl;
-      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.href = usdzUrl;
-      } else {
-        // Desktop fallback
-        document.body.innerHTML = "<h2>This AR experience is available only on iOS or Android devices.</h2>";
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>View in AR</title>
+  </head>
+  <body>
+    <a rel="ar" href="Sushi.usdz">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWlobmwxcjk5ZXIzZ3g1ZjdqMTF3dmM2a3NndWo4YjR0OXBhMXI3YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3og0IJD4VvwWc7ZepO/giphy.gif" alt="View in AR" style="width: 100%; max-width: 400px;">
+    </a>
+    <script>
+      // Auto-click the AR link for iPhone
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        document.querySelector("a[rel='ar']").click();
       }
-    };
-  </script>
-</head>
-<body>
-  <p>Redirecting to AR experience...</p>
-</body>
+    </script>
+  </body>
 </html>
