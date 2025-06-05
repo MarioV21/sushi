@@ -26,13 +26,14 @@
       width: 100%;
       max-width: 600px;
       height: 500px;
+      background: #fff;
+      border-radius: 16px;
     }
   </style>
 </head>
 <body>
   <h1>Tap to View in AR</h1>
 
-  <!-- 3D/AR Viewer Component -->
   <model-viewer
     src="Sushi.glb"
     ios-src="Sushi.usdz"
@@ -43,7 +44,8 @@
     camera-controls
     shadow-intensity="1"
     exposure="1"
-    style="border-radius: 16px; background: #fff;">
+    poster="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzNmOXUya3I0dHo2YnFnZmxya2phMWxjd2hxYm85NWNzZjMwMmZjdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3og0IJD4VvwWc7ZepO/giphy.gif"
+    reveal="interaction">
   </model-viewer>
 
 </body>
